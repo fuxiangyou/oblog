@@ -1,0 +1,47 @@
+
+/*定义字体*/
+@font-face {
+    font-family: 'TaurusNormal';
+    src: url('../fonts/TaurusNormal.woff') format('woff'), url('../fonts/TaurusNormal.ttf') format('truetype'), url('../fonts/TaurusNormal.svg') format('svg');
+}
+.navbar-brand {
+    font-family: TaurusNormal;
+    font-size: 26px;
+    line-height: 26px;
+    /*color: #7de87d;*/
+    color: #777;
+    margin-left: 0 !important;
+}
+.text-muted {
+    font-family: TaurusNormal;
+
+    color: #777;
+    margin-left: 0 !important;
+}
+
+.ls-about-small {
+    display: block;
+    font-size: 80%;
+    line-height: 1.42857143;
+    color: #777;
+}
+
+.ls-about-dl {
+    margin-left: -90px;
+}
+
+.ls-nav-search-form {
+    margin-top: 0px;
+    margin-bottom: 2px;
+    border-top: hidden;
+    border-bottom: hidden;
+}
+
+.ls-hide-nav {
+    display: none!important;
+}
+
+.ls-nav-search-well {
+    margin: -5px 50px 0 50px;
+}
+

@@ -1,0 +1,100 @@
+﻿<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>Owen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="OwenBlog">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/theme1/css/oblog.css">
+</head>
+<body>
+<div class="container">
+   <div th:replace=" theme1/taglib/header :: header"></div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <ul class="list-unstyled" th:each="article : ${result.data}">
+                <li th:if="${articleStat.index==0 } or ${#dates.year(article.createDate)!=#dates.year(result.data[articleStat.index-1].createDate)}" ><h3 th:text="${#dates.year(article.createDate)}"></h3></li>
+                <li>
+                    <time th:attr="datetime= ${article.createDate}" th:text="${#dates.format(article.createDate,'yyyy-MM-dd')}">2015-12-31</time>
+                    &nbsp&nbsp
+                    <a th:href="@{/article(id=${article.id})}" th:text="${article.title}">2015年度总结</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-md-6 col-md-offset-3">
+            <center>
+                <nav aria-label="Page navination">
+                    <ul class="pagination">
+
+                        <li><span class="disabled">&laquo;</span></li>
+
+
+                        <li class="active"><a href="">1</a></li>
+
+
+                        <li><a href="page2">2</a></li>
+
+
+                        <li><a href="page3">3</a></li>
+
+
+                        <li><a href="page4">4</a></li>
+
+
+                        <li><a href="page5">5</a></li>
+
+
+                        <li><a href="page2">&raquo;</a></li>
+
+                    </ul>
+                </nav>
+            </center>
+        </div>
+
+    </div>
+
+    <!-- Control Button -->
+    <button type="button" data-toggle="modal" data-target="#search-modal" style="display: none"></button>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-labelledby="search-modal-title">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border-bottom-color: transparent">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <center>
+                        <label><h3>搜索那些碎念 - OwenBlog</h3></label>
+                    </center>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-search"
+                                                             aria-hidden="true"></span></div>
+                        <input type="text" class="form-control ls-modal-search-input" placeholder="活动一下手指...">
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="media">
+                        <div class="media-body"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p class="text-center">Search by <a href="" target="_blank"><strong>OwenBlog</strong></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" th:replace=" theme1/taglib/footer :: footer"></div>
+</div>
+
+<script src="/theme1/js/oblog.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+
+
+<body>
+    <div class="row" style="margin-bottom: 1em;" id="header" th:fragment="header">
+        <!-- For Devices that Larger than Mobile -->
+        <div class="hidden-xs col-md-6 col-md-offset-3">
+            <h2 class="text-muted">Owen_blog</h2>
+            <ul class="nav nav-tabs">
+                <li class="pull-right"><a href="/about">About</a></li>
+                <li class="pull-right hidden-xs hidden-lg"><a href="search/">Search</a></li>
+                <li class="pull-right"><a href="guestbook/">Guestbook</a></li>
+                <li class="pull-right"><a href="/">Home</a></li>
+            </ul>
+        </div>
+        <!-- For Devices that Larger than Mobile - End -->
+
+        <!-- For Mobile -->
+
+        <!-- Show Mobile Normal Nav -->
+        <nav class="visible-xs navbar navbar-default" id="ls-nav-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#ls-navbar-collapse" aria-expanded="false" style="margin-top: 12px;">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <button class="navbar-toggle" style="border-color: transparent;"><span
+                            class="glyphicon glyphicon-search" id="ls-show-search-nav-button" aria-hidden="true"></span>
+                    </button>
+                    <a class="navbar-brand" href="" style="margin-top: 5px;font-family:TaurusNormal"><strong>Owen_blog</strong></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="ls-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="guestbook/">Guestbook</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Show Mobile Search Nav -->
+        <nav class="visible-xs navbar navbar-default ls-hide-nav" id="ls-nav-search">
+            <div class="container-fluid">
+                <form class="navbar-form ls-nav-search-form" role="search">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </div>
+                            <input type="text" class="form-control ls-nav-search-input" placeholder="活动一下手指...">
+                            <div class="input-group-addon" style="background-color: #fff;">
+                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"
+                                      id="ls-hide-search-button"></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </nav>
+        <div class="well ls-nav-search-well" style="display: none;">
+            <div class="ls-nav-search-data"></div>
+            <footer style="margin-bottom: -10px;">
+                <p class="text-center">Search by <a href="" target="_blank"><strong>@Owen_blog</strong></a></p>
+            </footer>
+        </div>
+
+        <!-- For Mobile - End -->
+
+    </div>
+</body>
+</html>
