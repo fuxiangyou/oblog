@@ -13,4 +13,5 @@ import cn.owenfu.model.classify.Classify;
  * 分类 数据访问层
  */
 public interface ClassifyDao extends BaseDao<Classify, Long> {
+
 }

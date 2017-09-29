@@ -14,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -79,10 +81,19 @@ public class ArticleController extends BaseController {
      * @return
      */
     @RequestMapping(value = "addArticle")
-    public String addArticle(Article article,ModelMap map){
+    public String addArticle(Article article, HttpServletRequest request,ModelMap map){
         Result result = new Result();
+        String cid = request.getParameter("classify.id");
+        Article article1 = new Article();
+        if (cid != null) {
+            Set<Classify> classifies = article.getClassifies();
+            Long l = Long.valueOf(cid);
+            Classify classify = classifyService.get(l);
+            classifies.add(classify);
+            article.setClassifies(classifies);
+        }
         try {
-            Article article1 = articleService.save(article);
+             article1 = articleService.save(article);
             result.setData(article1);
             result.setCode(ResultMsg.SUCCESSAA.getCode());
             result.setMessage(ResultMsg.SUCCESSAA.getMsg());
@@ -92,7 +103,7 @@ public class ArticleController extends BaseController {
             result.setMessage(ResultMsg.EXCEPTIONAA.getMsg());
         }
         map.addAttribute(result);
-        return "admin/add_article";
+        return "redirect:add?id="+article1.getId();
     }
 
     /**

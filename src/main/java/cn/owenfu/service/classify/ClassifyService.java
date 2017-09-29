@@ -4,6 +4,7 @@ import cn.owenfu.common.BaseDao;
 import cn.owenfu.common.BaseService;
 import cn.owenfu.dao.classify.ClassifyDao;
 import cn.owenfu.model.classify.Classify;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,4 +18,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ClassifyService extends BaseService<ClassifyDao,Classify> {
+
+    @Autowired
+    private ClassifyDao classifyDao;
 }

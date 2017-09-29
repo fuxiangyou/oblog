@@ -4,6 +4,7 @@ import cn.owenfu.common.BaseEntity;
 import cn.owenfu.model.article.Article;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -22,7 +23,7 @@ public class Classify extends BaseEntity<Classify> {
     private String name; //类名
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "ArticleClassify",joinColumns = {@JoinColumn(name = "cid")},inverseJoinColumns = {@JoinColumn(name = "aid")})
-    private Set<Article> articles;//文章 多对多
+    private Set<Article> articles = new HashSet<>();//文章 多对多
     public String getName() {
         return name;
     }

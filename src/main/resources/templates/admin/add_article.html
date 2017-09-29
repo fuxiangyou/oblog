@@ -68,9 +68,9 @@
                                 <ul class="category-list" th:each="classify : ${classifies}">
                                     <li>
                                         <label>
-                                            <input name="category" type="radio" th:attr="value=${classifyStat.index+1}" checked>
-                                            <span th:text="${classify.name}"></span> <em class="hidden-md">( 栏目ID:
-                                            <span>1</span> )</em></label>
+                                            <input name="classify.id" type="radio" th:attr="value=${classify.id}" th:checked="${#lists.size(result.data.classifies)!=0 and classify.id == result.data.classifies[0].id }" >
+                                            <span th:text="${classify.name}"></span>
+                                        </label>
                                     </li>
                                 </ul>
                                 <ul class="category-list">

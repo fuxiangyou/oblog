@@ -5,6 +5,7 @@ import cn.owenfu.model.classify.Classify;
 import cn.owenfu.model.label.Label;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,10 +28,10 @@ public class Article extends BaseEntity<Article> {
     private byte visibility; //0 公开 1私密
     @ManyToMany(fetch = FetchType.EAGER)//立即从数据库中进行加载数据;
     @JoinTable(name = "ArticleLabel",joinColumns = {@JoinColumn(name = "aid")},inverseJoinColumns = {@JoinColumn(name = "lid")})
-    private List<Label> labels;//对应标签 多对多
+    private Set<Label> labels = new HashSet<>();//对应标签 多对多
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "ArticleClassify",joinColumns = {@JoinColumn(name = "aid")},inverseJoinColumns = {@JoinColumn(name = "cid")})
-    private Set<Classify> classifies;//对应分类 多对多
+    private Set<Classify> classifies = new HashSet<>();//对应分类 多对多
 
     public String getTitle() {
         return title;
@@ -56,11 +57,11 @@ public class Article extends BaseEntity<Article> {
         this.likeNum = likeNum;
     }
 
-    public List<Label> getLabels() {
+    public Set<Label> getLabels() {
         return labels;
     }
 
-    public void setLabels(List<Label> labels) {
+    public void setLabels(Set<Label> labels) {
         this.labels = labels;
     }
 
